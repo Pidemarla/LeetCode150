@@ -1,0 +1,27 @@
+# Ternary Search works only on sorted lists
+def Ternerysearch(arr,target):
+    targetindex = None
+    left = 0
+    right = len(arr) -1
+    while targetindex == None:
+        mid1 = left + (right - left) //  3
+        mid2 = right - (right-left) // 3
+        if left <=right:
+            if arr[mid1] == target:
+                targetindex=mid1
+                return targetindex
+            elif arr[mid2] == target:
+                targetindex=mid2
+                return targetindex
+            elif arr[mid1] > target:
+                right = mid1-1
+            elif arr[mid2] < target:
+                left = mid2+1 
+            elif arr[mid1] < target and arr[mid2] > target:
+                left = mid1+1   
+                right = mid2-1             
+        else:
+            return targetindex
+arr = [1,24,8,15,23,84]
+targetindex=Ternerysearch(arr,1)
+print(targetindex)
